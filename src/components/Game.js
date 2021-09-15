@@ -1,49 +1,58 @@
 import React from 'react'
 import Board from './Board'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux';
 
 class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      history: [{
-        squares: Array(9).fill(null),
-        positions: [null]   
-      }],
-      stepNumber: 0,
+      // history: [{
+      //   squares: Array(9).fill(null),
+      //   positions: [null]   
+      // }],
+      // stepNumber: 0,
       // xIsNext: true,
     };
   }
 
   handleClick(i) {
     const reference = ['(1,1)', '(2,1)','(3,1)','(1,2)','(2,2)','(3,2)','(1,3)','(2,3)','(3,3)']
-    const history = this.state.history.slice(0, this.state.stepNumber + 1);
+    const history = this.props.history.slice(0, this.props.stepNumber + 1);
     const current = history[history.length -1];
     const squares = current.squares.slice();
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
-    squares[i] = this.state.xIsNext ? 'X' : 'O';
-    this.setState({
-      stepNumber: history.length,
-      history: history.concat([{
-        squares: squares,
-        positions: reference[i],
-      }]),
-      xIsNext: !this.state.xIsNext,
-    })
+    squares[i] = this.props.xIsNext ? 'X' : 'O';
+    
+    const { dispatch } = this.props;
+    const action = {
+      type: "TOGGLE_TURN",
+    }
+    dispatch(action);
+    const action2 = {
+      type: "ADD_MOVE",
+      squares: squares,
+      positions: reference[i],
+    }
+    dispatch(action2);
+    const action3 = {
+      type: "ADD_STEP"
+    }
+    dispatch(action3);
   }
 
-  jumpTo(step) {
-    this.setState({
-      stepNumber: step,
-      xIsNext: (step % 2) === 0,
-    });
-  }
+  // jumpTo(step) {
+  //   this.setState({
+  //     stepNumber: step,
+  //     xIsNext: (step % 2) === 0,
+  //   });
+  // }
 
   render() {
-    const history = this.state.history;
-    const current = history[this.state.stepNumber];
+    const history = this.props.history;
+    const current = history[this.props.stepNumber];
     const winner = calculateWinner(current.squares);
     const latest = history.length-1
 
@@ -106,5 +115,21 @@ function calculateWinner(squares) {
   }
   return null;
 }
+
+const mapStateToProps = state => { 
+  return {
+    xIsNext: state.xIsNext,
+    history: state.history,
+    stepNumber: state.stepNumber,
+  }
+}
+
+Game.propTypes = {
+  xIsNext: PropTypes.bool,
+  history: PropTypes.array,
+  stepNumber: PropTypes.number,
+}
+
+Game = connect(mapStateToProps)(Game);
 
 export default Game;
