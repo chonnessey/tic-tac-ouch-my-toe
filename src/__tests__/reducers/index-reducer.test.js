@@ -44,4 +44,14 @@ describe("rootReducer", () => {
     expect(store.getState().stepNumber).toEqual(stepNumberReducer(0, action));
   });
 
+  test('Check that ADD_MOVE action works for historyReducer and root reducer', () => {
+    const action = {
+      type: 'ADD_MOVE',
+      squares: [1],
+      positions: [1],
+    };
+    store.dispatch(action);
+    expect(store.getState().history).toEqual(historyReducer([], action));
+  });
+
 });
