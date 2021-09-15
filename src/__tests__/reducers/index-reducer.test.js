@@ -28,4 +28,12 @@ describe("rootReducer", () => {
     expect(store.getState().stepNumber).toEqual(stepNumberReducer(0, { type: null }));
   });
 
+  test('Check that TOGGLE_TURN action works for xIsNextReducer and root reducer', () => {
+    const action = {
+      type: 'TOGGLE_TURN'
+    }
+    store.dispatch(action);
+    expect(store.getState().xIsNext).toEqual(xIsNextReducer(true, action));
+  });
+
 });
