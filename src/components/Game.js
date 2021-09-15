@@ -1,5 +1,6 @@
 import React from 'react'
 import Board from './Board'
+import PropTypes from 'prop-types'
 
 class Game extends React.Component {
   constructor(props) {
