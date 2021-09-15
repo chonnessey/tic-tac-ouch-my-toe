@@ -11,7 +11,7 @@ class Game extends React.Component {
         positions: [null]   
       }],
       stepNumber: 0,
-      xIsNext: true,
+      // xIsNext: true,
     };
   }
 
