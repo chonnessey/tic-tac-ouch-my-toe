@@ -16,13 +16,13 @@ describe("rootReducer", () => {
     });
   });
 
-  test('Check that initial state of ticketListReducer matches root reducer', () => {
+  test('Check that initial state of xIsNextReducer matches root reducer', () => {
     expect(store.getState().xIsNext).toEqual(xIsNextReducer(true, { type: null }));
   });
 
-  // test('Check that initial state of ticketListReducer matches root reducer', () => {
-  //   expect(store.getState().masterTicketList).toEqual(ticketListReducer(undefined, { type: null }));
-  // });
+  test('Check that initial state of historyReducer matches root reducer', () => {
+    expect(store.getState().history).toEqual(historyReducer([], { type: null }));
+  });
   
   // test('Check that initial state of formVisibleReducer matches root reducer', () => {
   //   expect(store.getState().formVisibleOnPage).toEqual(formVisibleReducer(undefined, { type: null }));
