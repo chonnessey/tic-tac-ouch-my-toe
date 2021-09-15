@@ -14,7 +14,7 @@ function Board(props) {
   }
 
   return (
-    <div>
+    <div>      
       <div className="board-row">
         {renderSquare(0)}
         {renderSquare(1)}
