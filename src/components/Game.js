@@ -6,21 +6,13 @@ import { connect } from 'react-redux';
 class Game extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      // history: [{
-      //   squares: Array(9).fill(null),
-      //   positions: [null]   
-      // }],
-      // stepNumber: 0,
-      // xIsNext: true,
-    };
+    this.state = { };
   }
 
   handleClick(i) {
     const reference = ['(1,1)', '(2,1)','(3,1)','(1,2)','(2,2)','(3,2)','(1,3)','(2,3)','(3,3)']
     const history = this.props.history.slice(0, this.props.stepNumber + 1);
     const current = history[history.length-1];
-    console.log("history",history);
     const squares = current.squares.slice();
     if (calculateWinner(squares) || squares[i]) {
       return;
@@ -62,8 +54,6 @@ class Game extends React.Component {
     dispatch(action);
     dispatch(action2);
 
-    console.log(this.props.stepNumber);
-    console.log(step)
   }
 
   render() {
