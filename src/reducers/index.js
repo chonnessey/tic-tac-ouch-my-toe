@@ -1,6 +1,6 @@
-import stepNumberReducer from './reducers/stepNumber-reducer'
-import xIsNextReducer from './reducers/xIsNext-reducer'
-import historyReducer from './reducers/history-reducer'
+import stepNumberReducer from './stepNumber-reducer'
+import xIsNextReducer from './xIsNext-reducer'
+import historyReducer from './history-reducer'
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
