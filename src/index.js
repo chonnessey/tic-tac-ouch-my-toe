@@ -2,7 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App'
+import { createStore } from 'redux';
 
+
+
+const store = createStore()
+
+ReactDOM.render(
+  <React.StrictMode>  
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 // function calculateWinner(squares) {
 //   const lines = [
 //     [0, 1, 2],
@@ -153,9 +164,3 @@ import App from './components/App'
 //   }
 // }
 
-ReactDOM.render(
-  <React.StrictMode>  
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
