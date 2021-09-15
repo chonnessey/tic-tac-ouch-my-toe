@@ -1,7 +1,8 @@
 export default (state = 0, action) => {
+  const { stepNumber } = action;
   switch (action.type) {
     case 'ADD_STEP':
-      return state + 1;
+      return stepNumber;
     default:
       return state;
   }
