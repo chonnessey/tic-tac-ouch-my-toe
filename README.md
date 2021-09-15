@@ -1,6 +1,6 @@
 To-Do
-1. Make components folder => separate functions/classes
-2. Reducers => Tests
+<!-- 1. Make components folder => separate functions/classes -->
+<!-- 2. Reducers => Tests -->
 3. Add Redux (Create reducers/use store for states)
 4. Use root reducer to combine all reducers
 5. Rewrite Board to use two loops to make the squares instead of hardcoding them.
